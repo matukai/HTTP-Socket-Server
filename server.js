@@ -39,33 +39,29 @@ function requestHandler (req,request) {
 
   let response;
   let responseHead = responseHeader1 + codeOK + '\n' + serverName + '\n' + today + '\n';
-
-  console.log(responseHead);
+  let responseHeadNotFound = responseHeader1 + codeNotFound + '\n' + serverName + '\n' + today;
 
   if(uri === '/' || '/index.html'){
-    // return response head and module index
     response = responseHead + '\n' + index;
-    console.log(response)
+    req.write(response);
+    req.end();
+  }else if(uri === '/hydrogen.html'){
+    response = resonseHead + '\n' + hydrogen;
+    req.write(response);
+    req.end();
+  }else if(uri === '/helium.html'){
+    response = responseHead + '\n' + helium;
+    req.write(response);
+    req.end();
+  }else if(uri === '/404.html'){
+    response = responseHeadNotFound + '\n' + notFound;
+    req.write(response);
+    req.end();
+  }else if(uri === 'css/styles.css'){
+    response = responsHead + '\n' + styles;
     req.write(response);
     req.end();
   }
-  // else if(uri === '/hydrogen.html'){
-  //   response = resonseHead + hydrogen;
-  //   req.write(response);
-
-  // }else if(uri === '/helium.html'){
-  //   response = responseHead + helium
-  //   req.write(response);
-
-  // }else if(uri === '/404.html'){
-  //   response = responseHead + notFound;
-  //   req.write(response);
-
-  // }else if(uri === 'css/styles.css'){
-  //   response = responsHead + styles
-  //   req.write(response);
-  // }
-
 
 
 }// end requestHandler
