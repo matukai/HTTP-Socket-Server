@@ -53,12 +53,12 @@ function requestHandler (req,request) {
     response = responseHead + '\n' + helium;
     req.write(response);
     req.end();
-  }else if(uri === '/404.html'){
-    response = responseHeadNotFound + '\n' + notFound;
-    req.write(response);
-    req.end();
   }else if(uri === 'css/styles.css'){
     response = responsHead + '\n' + styles;
+    req.write(response);
+    req.end();
+  }else{
+    response = responseHeadNotFound + '\n' + notFound;
     req.write(response);
     req.end();
   }
